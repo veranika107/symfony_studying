@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if messages|length > 0 %}
+        {% for key, message in messages|slice(0, limit) %}
+            <div>
+                <a href="{{ path('app_show_two', { limit: key }) }}">{{ message.message }}</a>
+            </div> <!-- OR message['message']</div> -->
+            {{ include('_message.html.twig', {newmessage: message} ) }}
+        {% endfor%}
+    {% else %}
+        There's nothing here yet!
+    {% endif %}
+{% endblock %}
